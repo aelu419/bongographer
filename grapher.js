@@ -130,11 +130,11 @@ async function draw(){
 		context.drawImage(bodyDown, pX, drawHeight, bodyW, bodyH); //bodies are draw at the very bottom
 		
 		y = cats[i];
-		var pYL = max(yMin, lerp(0, drawHeight, 1.0 - (y-yMin)/(yMax-yMin)) - bodyH/2);
+		var pYL = lerp(0, drawHeight, 1.0 - (y-yMin)/(yMax-yMin)) - bodyH/2;
 		
 		
 		y = cats[i+1];
-		var pYR = max(yMin, lerp(0, drawHeight, 1.0 - (y-yMin)/(yMax-yMin)) - bodyH/2);
+		var pYR = lerp(0, drawHeight, 1.0 - (y-yMin)/(yMax-yMin)) - bodyH/2;
 		
 		//console.log(y+","+pYL+", "+pYR);
 		//attatchment point of paws
