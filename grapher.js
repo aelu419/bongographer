@@ -42,6 +42,15 @@ function max(a, b){
 	}
 }
 
+function min(a, b){
+	if (a < b) {
+		return a;
+	}
+	else {
+		return b;
+	}
+}
+
 //initialize
 var i;
 for(i = 0; i < cNum; i++){
@@ -278,9 +287,30 @@ function notify(){
 	//initialize
 	cats0 = [];
 	cats1 = [];
+	
+	var maxVal= 2.4,
+		minVal = -2.4;
+	
+	//set bounds
+	for (i = 0; i < cNum; i+= 0.1){
+		x = i/(cNum-1)*(xMax-xMin)+xMin;
+		var y = calculate(latex, x);
+		if(y>maxVal) {
+			maxVal = y;
+		}
+		if(y < minVal) {
+			minVal = y;
+		}
+	}
+	
+	console.log(minVal+" ", maxVal);
+	
+	//yMax = min(1000, maxVal);
+	//yMin = max(-1000, minVal);
+	
 	for(i = 0; i < cNum; i++){
-		cats0.push(cats[i]);
-		cats0.push(cats[i]);
+		cats0.push(yMin);
+		cats0.push(yMin);
 		
 		var x = i/(cNum-1)*(xMax-xMin)+xMin;
 		var bodyW = (xMax - xMin) / cNum;
