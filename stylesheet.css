@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* CSS Document */
+
+#body {
+	width : 100%;
+}
+
+#canvas {
+	width : 80%;
+	max-width: 640px;
+}
+
+#compact {
+	width : 80%;
+	max-width: 640px;
+	height:auto;
+}
+
+#compact td {
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+#input {
+	width : 100%;
+}
+
+#graph {
+	
+}
+
+#error {
+	color: red;
+}
+
+* {
+	font-family: Verdana, Helvetica, sans-serif;
+	font-weight: normal;
+}
