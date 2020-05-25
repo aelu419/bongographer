@@ -15,6 +15,29 @@
 		</script>
 		<!--script src="https://www.desmos.com/api/v1.5/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script-->
 		<script src = "./grapher.js"></script>
+
+		<div id="settingHolder">
+			<button id="settings" onclick="toggleSettings()">settings</button>
+			<br/>
+			<table id = "settingsTable">
+				<tr>
+					<td>xMin:</td><td><input type = "number" value="-3.2" onchange="updateSettings()"/></td>
+				</tr>
+				<tr>
+					<td>xMax:</td><td><input type = "number" value="3.2" onchange="updateSettings()"/></td>
+				</tr>
+				<tr>
+					<td>yMin:</td><td><input type = "number" value="-2.4" onchange="updateSettings()"/></td>
+				</tr>
+				<tr>
+					<td>yMax:</td><td><input type = "number" value="2.4" onchange="updateSettings()"/></td>
+				</tr>
+				<tr>
+					<td>number of cats:</td><td><input type = "number" value="8" onchange="updateSettings()"/></td>
+				</tr>
+			</table>
+		</div>
+
 		<canvas id = "canvas" width="1000" height = "720"></canvas>
 
 		<table id = "compact">
