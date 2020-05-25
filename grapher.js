@@ -29,8 +29,6 @@ function sleep(t){
 
 function calculate(str, val){
 	var fn = evaluatex(str);
-	console.log(str+" with x="+val+" is:");
-	console.log("\t"+fn({x: val}));
 	return fn({x: val});
 }
 
@@ -317,21 +315,11 @@ function notify(){
 
 		var x = i/(cNum)*(xMax-xMin)+xMin;
 
-		console.log('x bounds: '+xMin +" "+xMax);
-		console.log(x);
-
 		var bodyW = (xMax - xMin) / cNum;
-		console.log(bodyW);
 		var xL = x + bodyW * 114.0/body.width;
 		var xR = x + bodyW * 408.0/body.width;
-		console.log(xL);
-		console.log(xR);
 		cats1.push(calculate(latex, xL));
 		cats1.push(calculate(latex, xR));
-
-		console.log("x calc done");
-
-		//console.log(xL+", "+xR);
 	}
 
 	//console.log(cats1);
@@ -378,11 +366,7 @@ function updateSettings(){
 	yMax = parseFloat(params[3].value);
 	cNum = max(1, parseFloat(Math.round(params[4].value)));
 
-	console.log(xMin+" "+xMax+" "+yMin+" "+yMax);
-
 	canvasRefresh();
-
-	//console.log(params);
 }
 
 window.onload = function(){
