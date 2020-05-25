@@ -2,12 +2,25 @@
 /* CSS Document */
 
 #body {
-	width : 100%;
+	width : 80%;
+	margin: auto;
 }
 
 #canvas {
 	width : 80%;
 	max-width: 640px;
+}
+
+#settingHolder {
+	width : 100%;
+	text-align: right;
+	overflow: auto;
+}
+
+#settingHolder table{
+	display: inline-block;
+	transition: all 0.8s;
+	height: 0px;
 }
 
 #compact {
@@ -26,7 +39,7 @@
 }
 
 #graph {
-	
+
 }
 
 #error {

@@ -244,21 +244,25 @@ function testExpr(str) {
     calculate(str, -1);
   } catch (e) {
     console.log(e);
-    return false;
+    return e.toString();
   }
-  return true;
+  return "";
 }
 
-function displayError() {
+function displayError(msg) {
+  if (msg === "") {
+    document.getElementById("error").innerHTML = "";
+    return;
+  }
   document.getElementById("error").innerHTML = "error :3";
 }
 
 function notify() {
   //test if the input actually works
   var latex = document.getElementById("input").value;
-  if (testExpr(latex)) {
-  } else {
-    displayError();
+  var err = testExpr(latex);
+  displayError(err);
+  if (!err === "") {
     return;
   }
 
@@ -278,6 +282,7 @@ function notify() {
   cats0 = [];
   cats1 = [];
 
+  /*
   var maxVal = 2.4,
     minVal = -2.4;
 
@@ -291,7 +296,7 @@ function notify() {
     if (y < minVal) {
       minVal = y;
     }
-  }
+  }*/
 
   // console.log(minVal + " ", maxVal);
 
@@ -302,14 +307,13 @@ function notify() {
     cats0.push(yMin);
     cats0.push(yMin);
 
-    var x = (i / (cNum - 1)) * (xMax - xMin) + xMin;
+    var x = (i / cNum) * (xMax - xMin) + xMin;
+
     var bodyW = (xMax - xMin) / cNum;
     var xL = x + (bodyW * 114.0) / body.width;
     var xR = x + (bodyW * 408.0) / body.width;
     cats1.push(calculate(latex, xL));
     cats1.push(calculate(latex, xR));
-
-    //console.log(xL+", "+xR);
   }
 
   //console.log(cats1);
@@ -324,6 +328,46 @@ function canvasRefresh() {
   canvas.height = (canvas.width / 6.4) * 4.8 + buffer;
   notify();
 }
+
+//show/hide the settings menu
+function toggleSettings() {
+  var table = document.getElementById("settingsTable");
+  if (table.style.height == 0 || table.style.height == "0px") {
+    //expand
+    table.style.height = "auto";
+  } else {
+    //shrink
+    table.style.height = "0px";
+  }
+}
+
+window.toggleSettings = toggleSettings;
+
+function updateSettings() {
+  var params = document
+    .getElementById("settingsTable")
+    .getElementsByTagName("INPUT");
+
+  //min cannot be larger than max, min cannot be equal to max
+  if (
+    params[0].value >= params[1].value ||
+    params[2].value >= params[3].value
+  ) {
+    console.log("problematic setting");
+    return;
+  }
+
+  //set parameter values
+  xMin = parseFloat(params[0].value);
+  xMax = parseFloat(params[1].value);
+  yMin = parseFloat(params[2].value);
+  yMax = parseFloat(params[3].value);
+  cNum = max(1, parseFloat(Math.round(params[4].value)));
+
+  canvasRefresh();
+}
+
+window.updateSettings = updateSettings;
 
 window.onload = function () {
   //load the calcualtor
