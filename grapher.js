@@ -1,4 +1,4 @@
-import {evaluate} from "/web_modules/mathjs.js";
+import {evaluate} from "./web_modules/mathjs.js";
 var cats0 = [];
 var cats1 = [];
 var cats = [];
