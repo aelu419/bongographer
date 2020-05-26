@@ -9,15 +9,15 @@
 <body>
 	<center id = "body">
 		<h1 id="title">Bongo Cat Grapher</h1>
-		<script src =  "./evaluatex.min.js"></script>
+		<!--script src =  "./evaluatex.min.js"></script>
 		<script>
 			evaluatex();
-		</script>
+		</script-->
 		<!--script src="https://www.desmos.com/api/v1.5/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script-->
-		<script src = "./grapher.js"></script>
+		<script type="module" src = "./grapher.js"></script>
 
 		<div id="settingHolder">
-			<button id="settings" onclick="toggleSettings()">settings</button>
+			<button id="settings" onclick="toggleSettings()"><img src = "./assets/settingRest.png"/></button>
 			<br/>
 			<table id = "settingsTable">
 				<tr>
@@ -33,6 +33,12 @@
 					<td>yMax:</td><td><input type = "number" value="2.4" onchange="updateSettings()"/></td>
 				</tr>
 				<tr>
+					<td>auto-fit:</td><td><input type = "checkbox" onchange = "updateSettings()"/></td>
+				</tr>
+				<tr>
+					<td colspan="2" style="color:gray;font-size:75%;">(do not use if the boundary values are too high/low)</td>
+				</tr>
+				<tr>
 					<td>number of cats:</td><td><input type = "number" value="8" onchange="updateSettings()"/></td>
 				</tr>
 			</table>
@@ -43,7 +49,7 @@
 		<table id = "compact">
 			<tr>
 				<td><p style="text-align:right;">y=</p></td>
-				<td><input id = "input" type = "text"></td>
+				<td><input id = "input" type = "text" onchange = "canvasRefresh()"></td>
 				<td><button id = "graph" onclick="canvasRefresh()">graph</button></td>
 			</tr>
 			<tr>
@@ -56,7 +62,6 @@
 	<center>
 		<p>webpage by Alan Tao</p>
 		<p>meme by @DitzyFlama, images based on <a href="https://deviantart.com/mandash1996/art/Bongo-Cat-Meme-764472620">source images</a> by mandash1996</p>
-		<p>uses <a href = "https:///arthanzel.github.io/evaluatex/">Evaluatex.js</a> by Martin Hanzel + a ton of Stack Overflow</p>
 	</center>
 	</footer>
 
